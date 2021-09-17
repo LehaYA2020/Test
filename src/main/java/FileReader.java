@@ -98,8 +98,7 @@ public class FileReader {
         } catch (Exception e) {
             throw new DAOException("Can't get XML", e);
         }
-        List<Company> companies = new ArrayList<>(companySet);
-        return companies;
+        return new ArrayList<>(companySet);
     }
 
     private Company createCompany(Element companyEl) {
