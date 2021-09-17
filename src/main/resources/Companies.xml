@@ -1,0 +1,17 @@
+<Company>
+    <company>
+        <id>2</id>
+        <Name>Пятёрочка</Name>
+        <Staff_Count>50000</Staff_Count>
+    </company>
+    <company>
+        <id>2</id>
+        <Name>Булочная №1</Name>
+        <Staff_Count>2001</Staff_Count>
+    </company>
+    <company>
+        <id>2</id>
+        <Name>Булочная №1</Name>
+        <Staff_Count>2001</Staff_Count>
+    </company>
+</Company>
