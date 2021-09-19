@@ -1,18 +1,20 @@
-import dao.Exceptions.DAOException;
-import dao.Exceptions.MessagesConstants;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import Exceptions.DAOException;
+import Exceptions.MessagesConstants;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.events.StartElement;
+import javax.xml.stream.events.XMLEvent;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Properties;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import static java.nio.file.Files.lines;
@@ -49,7 +51,7 @@ public class FileReader {
         } else return new DBAccess(properties.getProperty("url"), properties.getProperty("user"), "");
     }
 
-    private File getFileFromResources(String fileName) {
+    public File getFileFromResources(String fileName) {
         ClassLoader classLoader = getClass().getClassLoader();
         URL resource = classLoader.getResource(fileName);
 
@@ -75,35 +77,6 @@ public class FileReader {
         file = getFileFromResources(fileName);
         checkFile();
         return buildScripts(getData());
-    }
-
-    public List<Company> getCompanies(String fileName) {
-        isNull(fileName);
-        file = getFileFromResources(fileName);
-        checkFile();
-
-
-        Set<Company> companySet = new HashSet<>();
-        try {
-            DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            Document document = documentBuilder.parse(file);
-            NodeList nodeList = document.getElementsByTagName("company");
-            for (int i = 0; i < nodeList.getLength(); i++) {
-                Node node = nodeList.item(i);
-                if (Node.ELEMENT_NODE == node.getNodeType()) {
-                    Element element = (Element) node;
-                        companySet.add(createCompany(element));
-                }
-            }
-        } catch (Exception e) {
-            throw new DAOException("Can't get XML", e);
-        }
-        return new ArrayList<>(companySet);
-    }
-
-    private Company createCompany(Element companyEl) {
-        return new Company(companyEl.getElementsByTagName("Name").item(0).getTextContent(),
-                Integer.parseInt(companyEl.getElementsByTagName("Staff_Count").item(0).getTextContent()));
     }
 
     private void checkFile() throws DAOException {

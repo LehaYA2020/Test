@@ -2,8 +2,8 @@ import java.util.Objects;
 
 public class Company {
     private int id;
-    private final String name;
-    private final int staffCount;
+    private String name;
+    private int staffCount;
 
     public Company(String name, int staffCount) {
         this.name = name;
@@ -16,6 +16,9 @@ public class Company {
         this.staffCount = staffCount;
     }
 
+    public Company() {
+    }
+
     public int getId() {
         return id;
     }
@@ -26,6 +29,13 @@ public class Company {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setStaffCount(int staffCount) {
+        this.staffCount = staffCount;
     }
 
     public int getStaffCount() {

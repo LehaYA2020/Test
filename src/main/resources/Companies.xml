@@ -1,17 +1,22 @@
-<Company>
+<Companies>
     <company>
         <id>2</id>
-        <Name>Пятёрочка</Name>
-        <Staff_Count>50000</Staff_Count>
+        <name>Пятёрочка</name>
+        <staff_count>50000</staff_count>
     </company>
     <company>
         <id>2</id>
-        <Name>Булочная №1</Name>
-        <Staff_Count>2001</Staff_Count>
+        <name>Булочная №1</name>
+        <staff_count>2001</staff_count>
     </company>
     <company>
         <id>2</id>
-        <Name>Булочная №1</Name>
-        <Staff_Count>2001</Staff_Count>
+        <name>Булочная №1</name>
+        <staff_count>2001</staff_count>
     </company>
-</Company>
+    <company>
+        <id>2</id>
+        <name>Булочная №2</name>
+        <staff_count>2001</staff_count>
+    </company>
+</Companies>
